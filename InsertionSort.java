@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class InsertionSort {
 	//An In-place Algorithm
+	//Worst Case Complexity O(n^2)
+	//Best Case Complexity Omega(n)
+	//neither using Binary Search nor Doubly LL help much
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n = -1;
