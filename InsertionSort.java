@@ -58,7 +58,6 @@ public class InsertionSort {
 	public static void print(int[] arr) {
 		System.out.println("Sorted Array:- ");
 		int c = 0;
-		System.out.println(arr.length);
 		for(int i: arr) {
 			System.out.print(i);
 			c++;
