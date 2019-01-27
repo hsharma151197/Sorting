@@ -35,37 +35,58 @@ public class MergeSort {
 	}
 	
 	public static void sort(int[] arr, int p, int r) {
-		int q = 0;
 		if(p<r) {
-			q = ((int)Math.floor((p+r)/2));
+			int q = (p+r)/2;
 			
-			int[] arr1 = new int[q-p+1];
-			int[] arr2 = new int[r-q];
-			for(int i = 0; i<arr1.length; i++) {
-				arr1[i] = arr[i];
-			}
-			for(int i = 0; i<arr2.length; i++) {
-				arr2[i] = arr[q+i+1];
-			}
 			sort(arr, p, q);
 			sort(arr, q+1, r);
 			
-			Merge(arr ,arr1, arr2);
+			Merge(arr, p, q, r);
 		}
 	}
 	
-	public static void Merge(int[] arr ,int[] arr1, int[] arr2) {
-		int i = 0, j = 0, k = 0;
-		if(arr1[i] <= arr2[j]) {
-			arr[k] = arr1[i];
-			i++;
+	public static void Merge(int[] arr, int p, int q, int r) {
+		int n1 = q-p+1;
+		int n2 = r-q;
+		int[] arr1 = new int[n1];
+		int[] arr2 = new int[n2];
+		
+		for(int i = 0; i<n1; i++) {
+			arr1[i] = arr[p+i];
+		}
+		for(int j = 0; j<n2; j++) {
+			arr2[j] = arr[q+1+j];
+		}
+		
+		int i = 0, j = 0;
+		int k = p;
+		
+		while(i < n1 && j < n2) {
+			if(arr1[i] <= arr2[j]) {
+				arr[k] = arr1[i];
+				i++;
+			}
+			else {
+				arr[k] = arr2[j];
+				j++;
+			}
 			k++;
 		}
-		else {
-			arr[k] = arr2[j];
-			j++;
-			k++;
-		}
+		
+		while (i < n1) 
+        { 
+            arr[k] = arr1[i]; 
+            i++; 
+            k++; 
+        } 
+		
+		while (j < n2) 
+        { 
+            arr[k] = arr2[j]; 
+            j++; 
+            k++; 
+        } 
+		
 		print(arr);
 	}
 	
